@@ -1,19 +1,19 @@
 class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
-  end
-
-  def new
-    @event = Event.new
+    if @event
+      render :json => @event.to_json
+    else
+      render :json => { :errors => "No such event!" }, :status => 422
+    end
   end
 
   def create
-    @event = Event.new(params[:event])
+    @event = Event.new(name: params[:name], hashtag: params[:hashtag])
     if @event.save
-      redirect_to @event
-      # Handle a successful save.
+      render :json => @event.to_json
     else
-      render 'new'
+      render :json => { :errors => @event.errors.full_messages }, :status => 422
     end
   end
 end

@@ -1,7 +1,7 @@
 BearParty::Application.routes.draw do
   resources :events
   root to: 'static_pages#home'
-  match '/register',  to: 'events#new'
+  match '/register',  to: 'events#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
