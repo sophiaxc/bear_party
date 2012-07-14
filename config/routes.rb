@@ -1,4 +1,5 @@
 BearParty::Application.routes.draw do
+  resources :events
   root to: 'static_pages#home'
   match '/register',  to: 'events#new'
 

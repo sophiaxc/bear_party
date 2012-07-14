@@ -1,3 +1,18 @@
 <% provide(:title, 'Register A New Event') %>
-<h1>Sign up</h1>
-<p>Find me in app/views/event/new.html.erb</p>
+<h1>Register Event</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@event) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :hashtag %>
+      <%= f.text_field :hashtag %>
+
+      <br>
+      <%= f.submit "Register Event", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
